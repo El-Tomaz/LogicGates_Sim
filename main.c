@@ -44,7 +44,7 @@ int main()
 
         // menu stuff
 
-        load_menu(&gate,&buffer_display);
+        load_menu(&gate);
 
     }
 }

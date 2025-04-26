@@ -11,9 +11,8 @@
 #define JOYSTICK_BUTTON 22
 
 void init_menu();
-void load_menu(LOGIC_GATE *gate, uint8_t *buffer);
-void get_selection(LOGIC_GATE *gate);
-void draw_gate(LOGIC_GATE gate, uint8_t *buffer);
+void load_menu(LOGIC_GATE *gate);
+void draw_gate(LOGIC_GATE gate);
 
 void init_menu()
 {
@@ -47,7 +46,7 @@ int joystick_read(){
 
 }
 
-void load_menu(LOGIC_GATE *gate, uint8_t *buffer){
+void load_menu(LOGIC_GATE *gate){
     static LOGIC_GATE last_gate = -1; //
 
     if(joystick_read() == 1){ // joystick is pointing down
@@ -67,14 +66,16 @@ void load_menu(LOGIC_GATE *gate, uint8_t *buffer){
     
 
     if (last_gate == *gate) return; // to not redraw if not needed
-    draw_gate(*gate, buffer);
+    draw_gate(*gate);
 
 
     last_gate = *gate;
 }
 
 
-void draw_gate(LOGIC_GATE gate, uint8_t *buffer ){
+void draw_gate(LOGIC_GATE gate){
+    uint8_t buffer[ssd1306_buffer_length] = {0};
+    
     clear_display(buffer);
     ssd1306_show(buffer);
 
