@@ -44,8 +44,7 @@ int main()
 
         // menu stuff
 
-        load_menu(buffer_display,&gate);
-
+        load_menu(&gate,&buffer_display);
 
     }
 }
@@ -75,7 +74,7 @@ void setLed(bool R, bool G, bool B){
 
 
 bool readButton(uint gpio){
-    return !gpio_get(gpio);
+    return gpio_get(gpio);
 }
 
 bool calculateLogicGate(LOGIC_GATE gate, bool A, bool B)

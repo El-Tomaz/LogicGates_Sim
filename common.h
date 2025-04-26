@@ -11,5 +11,4 @@ typedef enum{
     XNOR
 }LOGIC_GATE;
 
-
 #endif
